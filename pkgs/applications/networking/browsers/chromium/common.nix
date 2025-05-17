@@ -781,6 +781,9 @@ let
       }
       // lib.optionalAttrs ungoogled (lib.importTOML ./ungoogled-flags.toml)
       // (extraAttrs.gnFlags or { })
+      // {
+        enable_freetype = true;
+      }
     );
 
     # TODO: Migrate this to env.RUSTC_BOOTSTRAP next mass-rebuild.
