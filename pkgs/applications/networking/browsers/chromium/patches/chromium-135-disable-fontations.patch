@@ -1,0 +1,13 @@
+diff --git a/skia/fontations_feature.cc b/skia/fontations_feature.cc
+index 21913f8c9c921..b2050096e7e71 100644
+--- a/skia/fontations_feature.cc
++++ b/skia/fontations_feature.cc
+@@ -9,7 +9,7 @@ namespace skia {
+ // SkFontMgr instantiation in skia/ext/font_utils.cc
+ BASE_FEATURE(kFontationsLinuxSystemFonts,
+              "FontationsLinuxSystemFonts",
+-             base::FEATURE_ENABLED_BY_DEFAULT);
++             base::FEATURE_DISABLED_BY_DEFAULT);
+
+ // Instantiate system fonts on Android with Fontations, affects
+ // SkFontMgr instantiation in skia/ext/font_utils.cc
