@@ -1,13 +1,43 @@
-diff --git a/skia/fontations_feature.cc b/skia/fontations_feature.cc
-index 21913f8c9c921..b2050096e7e71 100644
---- a/skia/fontations_feature.cc
-+++ b/skia/fontations_feature.cc
-@@ -9,7 +9,7 @@ namespace skia {
- // SkFontMgr instantiation in skia/ext/font_utils.cc
- BASE_FEATURE(kFontationsLinuxSystemFonts,
-              "FontationsLinuxSystemFonts",
--             base::FEATURE_ENABLED_BY_DEFAULT);
-+             base::FEATURE_DISABLED_BY_DEFAULT);
-
- // Instantiate system fonts on Android with Fontations, affects
- // SkFontMgr instantiation in skia/ext/font_utils.cc
+diff --git a/skia/BUILD.gn b/skia/BUILD.gn
+index 524138f8a495b..1c5b75c3ded03 100644
+--- a/skia/BUILD.gn
++++ b/skia/BUILD.gn
+@@ -171,7 +171,7 @@ config("skia_library_config") {
+   if (use_blink && !use_system_freetype) {
+     defines += [ "SK_FREETYPE_MINIMUM_RUNTIME_VERSION_IS_BUILD_VERSION" ]
+   }
+-  if (use_blink && enable_freetype) {
++  if (use_blink) {
+     defines += [
+       "SK_TYPEFACE_FACTORY_FREETYPE",
+       "SK_TYPEFACE_FACTORY_FONTATIONS",
+@@ -404,7 +404,7 @@ component("skia") {
+   # default compile-in Fontations as well.
+   if (use_blink) {
+     # See SK_TYPEFACE_FACTORY_FREETYPE and SK_TYPEFACE_FACTORY_FONTATIONS
+-    if (enable_freetype) {
++    if (true) {
+       sources += skia_ports_freetype_sources
+       sources += skia_ports_fontmgr_custom_sources
+       sources += skia_ports_fontmgr_empty_sources
+diff --git a/third_party/BUILD.gn b/third_party/BUILD.gn
+index 256fd092e2e0f..de5c83cdf7f9c 100644
+--- a/third_party/BUILD.gn
++++ b/third_party/BUILD.gn
+@@ -55,7 +55,7 @@ group("jpeg_includes") {
+ component("freetype_harfbuzz") {
+   public_configs = []
+   public_deps = []
+-  if (enable_freetype) {
++  if (true) {
+     if (use_system_freetype) {
+       public_configs += [ "//build/linux:freetype_from_pkgconfig" ]
+     } else {
+@@ -73,6 +73,6 @@ buildflag_header("freetype_buildflags") {
+   header = "freetype_buildflags.h"
+   flags = [
+     "USE_SYSTEM_FREETYPE=$use_system_freetype",
+-    "ENABLE_FREETYPE=$enable_freetype",
++    "ENABLE_FREETYPE=1",
+   ]
+ }
