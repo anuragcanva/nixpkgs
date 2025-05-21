@@ -1,0 +1,12 @@
+diff --git a/skia/BUILD.gn b/skia/BUILD.gn
+index 524138f8a495b..b7c8ec71dc13c 100644
+--- a/skia/BUILD.gn
++++ b/skia/BUILD.gn
+@@ -174,7 +174,6 @@ config("skia_library_config") {
+   if (use_blink && enable_freetype) {
+     defines += [
+       "SK_TYPEFACE_FACTORY_FREETYPE",
+-      "SK_TYPEFACE_FACTORY_FONTATIONS",
+       "SK_FONTMGR_FREETYPE_EMPTY_AVAILABLE",
+     ]
+   }
