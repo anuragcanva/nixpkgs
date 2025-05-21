@@ -481,6 +481,8 @@ let
         # Partial revert of https://github.com/chromium/chromium/commit/3687976b0c6d36cf4157419a24a39f6770098d61
         # allowing us to use our rustc and our clang.
         ./patches/chromium-129-rust.patch
+        # disable fontations feature
+        ./patches/chromium-135-fontations-removal.patch
       ]
       ++ lib.optionals (!ungoogled) [
         # Our rustc.llvmPackages is too old for std::hardware_destructive_interference_size
